@@ -26,12 +26,12 @@ By default `macroexpand' is used. Prefix a call to this function
 with \\[universal-argument] (or pass ALL as a non-nil value) to
 have `maxroexpand-all' be used."
   (interactive "P")
-  (save-excursion
-    (beginning-of-defun)
-    (let ((form (read (current-buffer))))
-      (with-current-buffer-window "*Expando Macro*" nil nil
-        (emacs-lisp-mode)
-        (pp (funcall (if all #'macroexpand-all #'macroexpand) form))))))
+  (let ((form (save-excursion
+                (beginning-of-defun)
+                (read (current-buffer)))))
+    (with-current-buffer-window "*Expando Macro*" nil nil
+      (emacs-lisp-mode)
+      (pp (funcall (if all #'macroexpand-all #'macroexpand) form)))))
 
 (provide 'expando)
 
