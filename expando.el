@@ -38,7 +38,7 @@ If LEVEL is nil, `macroexpand-1' is used. If LEVEL is 1,
 
 ;;;###autoload
 (defun expando-macro (&optional level)
-  "Attempt to expand the expression at `point'.
+  "Attempt to expand the expression before `point'.
 
 By default `macroexpand-1' is used. Pass LEVEL as 1 (or prefix a
 call with \\[universal-argument] and 1) to use `macroexpand'.
