@@ -23,8 +23,6 @@
 (defun expando-macro (&optional all)
   "Attempt to expand the expression at `point'.
 
-The expansion is displayed in a help window.
-
 By default `macroexpand' is used. Prefix a call to this function
 with \\[universal-argument] (or pass ALL as a non-nil value) to
 have `maxroexpand-all' be used."
