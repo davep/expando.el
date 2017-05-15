@@ -19,6 +19,7 @@
 
 (require 'thingatpt)
 
+;;;###autoload
 (defun expando-macro (&optional all)
   "Attempt to expand the expression at `point'.
 
