@@ -33,7 +33,7 @@ have `maxroexpand-all' be used."
         (setf (buffer-string) "")
         (emacs-lisp-mode)
         (switch-to-buffer-other-window (current-buffer))
-        (pp (if all (macroexpand-all form) (macroexpand form))
+        (pp (funcall (if all #'macroexpand-all #'macroexpand) form)
             (current-buffer))))))
 
 (provide 'expando)
