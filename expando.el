@@ -24,18 +24,32 @@
 
 ;;; Code:
 
+(defun expando-expander (level)
+  "Decide which macro expansion function to use based on LEVEL.
+
+If LEVEL is nil, `macroexpand-1' is used. If LEVEL is 1,
+`macroexpad' is used. If LEVEL is any other non-nil value,
+`macroexpand-all' is used."
+  (if level
+      (if (and (numberp level) (= level 1))
+          #'macroexpand
+        #'macroexpand-all)
+    #'macroexpand-1))
+
 ;;;###autoload
-(defun expando-macro (&optional all)
+(defun expando-macro (&optional level)
   "Attempt to expand the expression at `point'.
 
-By default `macroexpand' is used. Prefix a call to this function
-with \\[universal-argument] (or pass ALL as a non-nil value) to
-have `maxroexpand-all' be used."
+By default `macroexpand-1' is used. Pass LEVEL as 1 (or prefix a
+call with \\[universal-argument] and 1) to use `macroexpand'.
+
+Pass LEVEL as 2 (or prefix a call with \\[universal-argument] and
+2) to use `macroexpand-all'."
   (interactive "P")
   (let ((form (elisp--preceding-sexp)))
     (with-current-buffer-window "*Expando Macro*" nil nil
       (emacs-lisp-mode)
-      (pp (funcall (if all #'macroexpand-all #'macroexpand) form)))))
+      (pp (funcall (expando-expander level) form)))))
 
 (provide 'expando)
 
