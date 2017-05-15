@@ -29,10 +29,12 @@ have `maxroexpand-all' be used."
   (save-excursion
     (beginning-of-defun)
     (let ((form (read (current-buffer))))
-      (with-help-window "*Expando Macro"
-        (pp (if all
-                (macroexpand-all form)
-              (macroexpand form)))))))
+      (with-current-buffer (get-buffer-create "*Expando Macro*")
+        (setf (buffer-string) "")
+        (emacs-lisp-mode)
+        (switch-to-buffer-other-window (current-buffer))
+        (pp (if all (macroexpand-all form) (macroexpand form))
+            (current-buffer))))))
 
 (provide 'expando)
 
