@@ -55,7 +55,7 @@ call with \\[universal-argument] and 1) to use `macroexpand'.
 Pass LEVEL as 2 (or prefix a call with \\[universal-argument] and
 2) to use `macroexpand-all'."
   (interactive "P")
-  (let ((form (elisp--preceding-sexp)))
+  (let ((form (preceding-sexp)))
     (with-current-buffer-window "*Expando Macro*" nil nil
       (emacs-lisp-mode)
       (pp (funcall (expando-expander level) form)))))
