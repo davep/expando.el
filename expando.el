@@ -1,8 +1,8 @@
 ;;; expando.el --- Quickly expand macros for easy reading/checking  -*- lexical-binding: t; -*-
-;; Copyright 2017 by Dave Pearson <davep@davep.org>
+;; Copyright 2017-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.4
+;; Version: 1.5
 ;; Keywords: lisp
 ;; URL: https://github.com/davep/expando.el
 ;; Package-Requires: ((emacs "25.1"))
