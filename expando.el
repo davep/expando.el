@@ -58,7 +58,8 @@ Pass LEVEL as 2 (or prefix a call with \\[universal-argument] and
   (let ((form (preceding-sexp)))
     (with-current-buffer-window "*Expando Macro*" nil nil
       (emacs-lisp-mode)
-      (pp (funcall (expando-expander level) form)))))
+      (local-set-key (kbd "q") #'quit-window)
+      (pp (funcall (expando--expander level) form)))))
 
 (provide 'expando)
 
