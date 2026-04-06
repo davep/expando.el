@@ -1,4 +1,4 @@
-;;; expando.el --- Quickly expand macros for easy reading/checking
+;;; expando.el --- Quickly expand macros for easy reading/checking  -*- lexical-binding: t; -*-
 ;; Copyright 2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
