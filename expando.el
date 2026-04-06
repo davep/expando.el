@@ -5,6 +5,7 @@
 ;; Version: 1.4
 ;; Keywords: lisp
 ;; URL: https://github.com/davep/expando.el
+;; Package-Requires: ((emacs "25.1"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
