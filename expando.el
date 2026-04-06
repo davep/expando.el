@@ -33,7 +33,7 @@
 
 ;;; Code:
 
-(defun expando-expander (level)
+(defun expando--expander (level)
   "Decide which macro expansion function to use based on LEVEL.
 
 If LEVEL is nil, `macroexpand-1' is used. If LEVEL is 1,
