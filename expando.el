@@ -39,18 +39,16 @@ If LEVEL is nil, `macroexpand-1' is used. If LEVEL is 1,
         #'macroexpand-all)
     #'macroexpand-1))
 
+(defvar-keymap expando-view-mode-map
+  :doc "Keymap for `expando-view-mode'."
+  "q" #'quit-window)
+
 (define-derived-mode expando-view-mode emacs-lisp-mode "expando"
   "Major mode for viewing expanded macros.
 
 The key bindings for `expando-view-mode' are:
 
 \\{expando-view-mode-map}")
-
-(defvar expando-view-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "q") #'quit-window)
-    map)
-  "Mode map for `expando-view-mode'.")
 
 ;;;###autoload
 (defun expando-macro (&optional level)
