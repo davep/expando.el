@@ -39,6 +39,19 @@ If LEVEL is nil, `macroexpand-1' is used. If LEVEL is 1,
         #'macroexpand-all)
     #'macroexpand-1))
 
+(define-derived-mode expando-view-mode emacs-lisp-mode "expando"
+  "Major mode for viewing expanded macros.
+
+The key bindings for `expando-view-mode' are:
+
+\\{expando-view-mode-map}")
+
+(defvar expando-view-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "q") #'quit-window)
+    map)
+  "Mode map for `expando-view-mode'.")
+
 ;;;###autoload
 (defun expando-macro (&optional level)
   "Attempt to expand the expression before `point'.
@@ -51,8 +64,7 @@ Pass LEVEL as 2 (or prefix a call with \\[universal-argument] and
   (interactive "P")
   (let ((form (elisp--preceding-sexp)))
     (with-current-buffer-window "*Expando Macro*" nil nil
-      (emacs-lisp-mode)
-      (local-set-key (kbd "q") #'quit-window)
+      (expando-view-mode)
       (pp (funcall (expando--expander level) form)))))
 
 (provide 'expando)
